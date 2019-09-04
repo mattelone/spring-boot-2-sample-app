@@ -11,25 +11,25 @@ public class HealthIT {
 	
 	@Test
     public void running() {
-		given().when().get("http://localhost:8080/")
+		given().when().get("http://localhost:4040/")
             .then().statusCode(200);
     }
 	
 	@Test
     public void message() {
-		given().when().get("http://localhost:8080/")
+		given().when().get("http://localhost:4040/")
             .then().body(containsString("Spring boot"));
     }
 	
 	@Test
     public void fullMessage() {
-		given().when().get("http://localhost:8080/")
+		given().when().get("http://localhost:4040/")
             .then().body("message",equalTo("Spring boot says hello from a Docker container"));
     }
 	
 	@Test
     public void health() {
-		given().when().get("http://localhost:8080/actuator/health")
+		given().when().get("http://localhost:4040/actuator/health")
             .then().body("status",equalTo("UP"));
     }
 
